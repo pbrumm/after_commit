@@ -17,7 +17,10 @@ module AfterCommit
             end
             
             if defined?(JRUBY_VERSION) and defined?(JdbcSpec::MySQL)
-              include_after_commit_extension JdbcSpec::MySQL
+              begin
+                include_after_commit_extension JdbcSpec::MySQL
+              rescue
+              end
             end
           end
           
